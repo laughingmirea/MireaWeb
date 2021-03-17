@@ -11,6 +11,8 @@ global $dbh
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="University">
+    <link rel="shortcut icon" href="../images/logo/mirea.ico">
+
     <meta name="author" content="Xuan Canh">
     <title>Student Management</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">

@@ -23,6 +23,8 @@ if (!isset($_SESSION["email"])) {
         <meta name="description" content="University">
         <meta name="author" content="Xuan Canh">
         <title>Student Manager | Dashboard</title>
+        <link rel="shortcut icon" href="../images/logo/mirea.ico">
+
         <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
         <link rel="stylesheet" href="css/main.css" media="screen">
         <link rel="preconnect" href="https://fonts.gstatic.com">

@@ -53,11 +53,14 @@ if (!isset($_SESSION["email"])) {
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 
 
-    <title>MIREA - Russian Technological University</title>
+    <title>MIREA / NEWS / EDIT POST</title>
   </head>
   <body>
 
 <?php
+ob_start();
+session_start();
+
 include_once './layouts/header_all.php';
 include_once './news_edit_post_main.php';
 include_once './layouts/footer.php';

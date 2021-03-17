@@ -42,9 +42,30 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 
+    <?php
+ob_start();
+session_start();
+include_once './connect.php';
+if (isset($_GET["mega_lab_link"])) {
+    $title_mega_lab_link = $_GET["mega_lab_link"];
 
+    $sql_title_mega_lab = "SELECT * FROM mega_lab WHERE mega_lab_link='$title_mega_lab_link'";
+    $query_title_mega_lab = mysqli_query($connect, $sql_title_mega_lab);
 
-    <title>MIREA - Russian Technological University</title>
+    if (mysqli_num_rows($query_title_mega_lab) > 0) {
+        $row_title_mega_lab = mysqli_fetch_array($query_title_mega_lab);
+
+        echo '
+                  <title>MIREA / MEGA-LABORATORIES / ', $row_title_mega_lab["mega_lab_name"], '</title>
+            ';
+
+    } else {
+        header('location: 404.php');
+
+    }
+
+}
+?>
   </head>
   <body>
 

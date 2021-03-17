@@ -132,7 +132,7 @@ if (mysqli_num_rows($query_slider_content) > 0) {
         </div> <!-- / .row -->
         <div class="row">
 <?php
-$sql_post = "SELECT * FROM post_news LIMIT 3";
+$sql_post = "SELECT * FROM post_news ORDER BY id DESC LIMIT 3";
 $query_post = mysqli_query($connect, $sql_post);
 
 if (mysqli_num_rows($query_post) > 0) {

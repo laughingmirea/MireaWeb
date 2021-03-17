@@ -139,7 +139,7 @@ echo $row_post["post_content"];
         <div class="row align-items-stretch">
 
 <?php
-$sql_post_second = "SELECT * FROM post_news LIMIT 3";
+$sql_post_second = "SELECT * FROM post_news ORDER BY id DESC LIMIT 3";
 $query_post_second = mysqli_query($connect, $sql_post_second);
 
 if (mysqli_num_rows($query_post_second) > 0) {

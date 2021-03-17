@@ -43,7 +43,7 @@
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 
 
-    <title>MIREA - Russian Technological University</title>
+    <title>MIREA / 404</title>
   </head>
   <body>
 

@@ -1,6 +1,5 @@
 <?php
-ob_start();
-session_start();
+
 include_once './connect.php';
 $notify = "";
 if (isset($_POST["submit"])) {
@@ -32,7 +31,7 @@ if (isset($_POST["submit"])) {
         } else {
             $notify .= '<script>
             Toastify({
-                text: "The email address or password is incorrect. Please retry...! Try again!",
+                text: "The email address or password is incorrect! Try again!",
                 duration: 5000,
                 close: true,
                 gravity: "bottom",
@@ -77,6 +76,125 @@ echo $notify;
           <div class="modal-body">
 
               <img src="images/background/poster.jpg" style="width: 100%;" alt="">
+
+          </div>
+        </div> <!-- / .modal-content -->
+      </div> <!-- / .modal-dialog -->
+    </div> <!-- / .modal -->
+
+     <!-- MODALS Change password
+    ================================================== -->
+    <div class="modal fade" id="modal-change-password" tabindex="-1" role="dialog" aria-labelledby="modal-video-header" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-video modal-lg" role="document">
+        <div class="modal-content">
+
+          <!-- Header -->
+          <div class="modal-header">
+
+            <!-- Title -->
+            <h4 class="modal-title text-white" id="modal-video-header">
+              Change password
+            </h4>
+
+            <!-- Close -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+          </div>
+          <div class="modal-body">
+
+            <form class="form-styled bg-white" method="post" role="form">
+
+              <input type="hidden" id="password_correct" value="<?php echo $_SESSION["password"]; ?>">
+              <input type="hidden" id="password_id" value="<?php echo $_SESSION["id"]; ?>">
+
+              <!-- Password -->
+              <div class="form-group">
+
+                <!-- Name -->
+                <label>Current password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control order-1" name="password_current" id="password_current">
+                  <div class="input-group-append order-0">
+                    <div class="input-group-text">
+                      <svg class="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path transform="translate(3 3)" d="
+                          M25 50 V 20 A 25 25 0 0 1 50 0 A 25 25 0 0 1 75 20 V 50 H 90 V 100 H 10 V 50 H 75 M50 85 A 5 5 0 0 1 45 80 V 70 A 5 5 0 0 1 50 65 A 5 5 0 0 1 55 70 V 80 A 5 5 0 0 1 50 85">
+                        </path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div id="CheckPasswordCorrect"></div>
+
+
+              <!-- Password -->
+              <div class="form-group">
+
+                <!-- Name -->
+                <label>New password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control order-1" name="password_new" id="password_new">
+                  <div class="input-group-append order-0">
+                    <div class="input-group-text">
+                      <svg class="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path transform="translate(3 3)" d="
+                          M25 50 V 20 A 25 25 0 0 1 50 0 A 25 25 0 0 1 75 20 V 50 H 90 V 100 H 10 V 50 H 75 M50 85 A 5 5 0 0 1 45 80 V 70 A 5 5 0 0 1 50 65 A 5 5 0 0 1 55 70 V 80 A 5 5 0 0 1 50 85">
+                        </path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div id="CheckSecurityPassword"></div>
+              <!-- Password -->
+              <div class="form-group">
+
+                <!-- Name -->
+                <label>Comfirm new password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control order-1" name="password_confirm" id="password_confirm">
+                  <div class="input-group-append order-0">
+                    <div class="input-group-text">
+                      <svg class="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path transform="translate(3 3)" d="
+                          M25 50 V 20 A 25 25 0 0 1 50 0 A 25 25 0 0 1 75 20 V 50 H 90 V 100 H 10 V 50 H 75 M50 85 A 5 5 0 0 1 45 80 V 70 A 5 5 0 0 1 50 65 A 5 5 0 0 1 55 70 V 80 A 5 5 0 0 1 50 85">
+                        </path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div id="CheckPasswordMatch"></div>
+
+              <!-- Footer -->
+              <div class="form-row align-items-center">
+                <div class="col-md-auto">
+
+                </div>
+                <div class="col-md">
+
+                  <!-- Button -->
+                  <div class="text-center text-md-right">
+                    <a onclick="updatePassword()" type="submit" class="btn btn-primary btn-sm" name="submit_change_password" id="submit_change_password">
+                      Update password
+                    </a>
+                  </div>
+
+                </div>
+              </div> <!-- / .form-row -->
+
+
+            </form>
+
 
           </div>
         </div> <!-- / .modal-content -->
@@ -397,9 +515,9 @@ if (!isset($_SESSION['email'])) {
                 <div class="col">
                       <!-- Button -->
                       <div class="text-center text-md-right">
-                        <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;">
+                        <a href="admin/dashboard.php" class="btn btn-primary btn-sm" style="width: 100%;">
                           Go to dashboard <i class="fas fa-tachometer-alt"></i>
-                        </button>
+                        </a>
                       </div>
                   </div>
 
@@ -414,28 +532,40 @@ if (!isset($_SESSION['email'])) {
         ';
     } else if ((Boolean) $_SESSION["isEditor"]) {
         echo '
-                <div class="col">
-                    <!-- Button -->
-                    <div class="text-center text-md-right">
-                    <a href="news_create_post.php" class="btn btn-primary btn-sm" style="width: 100%;">
-                        Create a post <i class="fas fa-pen-square"></i>
-                    </a>
-                    </div>
-                </div>
-        ';
+              <div class="col">
+                  <!-- Button -->
+                  <div class="text-center text-md-right">
+                  <a href="news_create_post.php" class="btn btn-primary btn-sm" style="width: 100%;">
+                      Create a post <i class="fas fa-pen-square"></i>
+                  </a>
+                  </div>
+              </div>
+      ';
+    } else if ((Boolean) $_SESSION["isStudent"]) {
+        echo '
+        <div class="col">
+            <!-- Button -->
+            <div class="text-center text-md-right">
+            <a href="admin/find-result.php" class="btn btn-primary btn-sm" style="width: 100%;">
+                Check learning outcomes <i class="fas fa-poll"></i>
+            </a>
+            </div>
+        </div>
+    ';
     }
 
     echo '
-                  <div class="col">
+
+                <div class="col">
                     <!-- Button -->
                     <div class="text-center text-md-right">
-                      <a href="maintenance.php" class="btn btn-primary btn-sm" style="width: 100%;">
-                        Personal email <i class="fas fa-inbox"></i>
-                      </a>
+                    <a href="#modal-change-password" onclick="showChangePassword()" data-toggle="modal" class="btn btn-primary btn-sm" style="width: 100%;">
+                        Change password <i class="fas fa-lock"></i>
+                    </a>
                     </div>
-                  </div>
-
                 </div>
+
+              </div>
 
                 <hr class="solid-dark">
 
@@ -620,6 +750,9 @@ if (mysqli_num_rows($query_catalog) > 0) {
                   <a class="dropdown-item " href="contact.php">
                     CONTACT
                   </a>
+                  <a class="dropdown-item " href="news_all_posts.php">
+                    NEWS
+                  </a>
               </div>
             </li>
 
@@ -656,3 +789,4 @@ if (isset($_SESSION['email'])) {
       </div> <!-- / .container -->
     </nav>
 
+    <script src="assets/js/header.js"></script>

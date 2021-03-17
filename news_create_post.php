@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 if (!isset($_SESSION["email"])) {
     header('location: index.php');
@@ -53,11 +54,12 @@ if (!isset($_SESSION["email"])) {
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 
 
-    <title>MIREA - Russian Technological University</title>
+    <title>MIREA / NEWS / CREATE POST</title>
   </head>
   <body>
 
 <?php
+
 include_once './layouts/header_all.php';
 include_once './news_create_post_main.php';
 include_once './layouts/footer.php';

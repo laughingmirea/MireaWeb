@@ -42,9 +42,29 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 
+    <?php
+ob_start();
+session_start();
+include_once './connect.php';
+if (isset($_GET["post_link"])) {
+    $post_link = $_GET["post_link"];
 
+    $sql_title = "SELECT * FROM post_news WHERE post_link='$post_link'";
+    $query_title = mysqli_query($connect, $sql_title);
 
-    <title>MIREA - Russian Technological University</title>
+    if (mysqli_num_rows($query_title) > 0) {
+        $row_title = mysqli_fetch_array($query_title);
+
+        echo '
+                  <title>MIREA / NEWS / ', $row_title["post_title"], '</title>
+            ';
+
+    } else {
+        header('location: 404.php');
+    }
+
+}
+?>
   </head>
   <body>
 

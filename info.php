@@ -42,9 +42,39 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 
+<?php
+ob_start();
+session_start();
+include_once './connect.php';
+if (isset($_GET["catalog_link"]) && isset($_GET["catalog_detail_link"])) {
+    $title_catalog_link = $_GET["catalog_link"];
+    $title_catalog_detail_link = $_GET["catalog_detail_link"];
+
+    $sql_title_catalog = "SELECT * FROM catalog WHERE catalog_link='$title_catalog_link'";
+    $query_title_catalog = mysqli_query($connect, $sql_title_catalog);
+
+    $sql_title_catalog_detail = "SELECT * FROM catalog_detail WHERE catalog_detail_link='$title_catalog_detail_link'";
+    $query_title_catalog_detail = mysqli_query($connect, $sql_title_catalog_detail);
+
+    if (mysqli_num_rows($query_title_catalog) > 0) {
+        $row_title_catalog = mysqli_fetch_array($query_title_catalog);
+        if (mysqli_num_rows($query_title_catalog_detail) > 0) {
+            $row_title_catalog_detail = mysqli_fetch_array($query_title_catalog_detail);
+            echo '
+                  <title>MIREA / ', $row_title_catalog["catalog_name"], ' / ', $row_title_catalog_detail["catalog_detail_name"], '</title>
+            ';
+
+        } else {
+            header('location: 404.php');
+        }
+    } else {
+        header('location: 404.php');
+    }
+
+}
+?>
 
 
-    <title>MIREA - Russian Technological University</title>
   </head>
   <body>
 

@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 session_start();
 if (!isset($_SESSION["email"])) {
     header('location: index.php');
@@ -24,6 +26,17 @@ if (isset($_POST["action"])) {
 
         if (isset($person_image)) {
             $sql = "UPDATE people SET person_image='$person_image' WHERE id='$person_id'";
+            $query = mysqli_query($connect, $sql);
+        }
+    }
+
+    if ($_POST["action"] == "update-password") {
+
+        $person_password = $_POST["password"];
+        $person_id = $_POST["id"];
+
+        if (isset($person_password) && isset($person_id)) {
+            $sql = "UPDATE people SET person_password='$person_password' WHERE id='$person_id'";
             $query = mysqli_query($connect, $sql);
         }
     }

@@ -43,8 +43,38 @@
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 
 
+    <?php
+ob_start();
+session_start();
+include_once './connect.php';
+if (isset($_GET["institutes_link"]) && isset($_GET["institutes_detail_link"])) {
+    $title_institutes_link = $_GET["institutes_link"];
+    $title_institutes_detail_link = $_GET["institutes_detail_link"];
 
-    <title>MIREA - Russian Technological University</title>
+    $sql_title_institutes = "SELECT * FROM institutes WHERE institutes_link='$title_institutes_link'";
+    $query_title_institutes = mysqli_query($connect, $sql_title_institutes);
+
+    $sql_title_institutes_detail = "SELECT * FROM institutes_detail WHERE institutes_detail_link='$title_institutes_detail_link'";
+    $query_title_institutes_detail = mysqli_query($connect, $sql_title_institutes_detail);
+
+    if (mysqli_num_rows($query_title_institutes) > 0) {
+        $row_title_institutes = mysqli_fetch_array($query_title_institutes);
+        if (mysqli_num_rows($query_title_institutes_detail) > 0) {
+            $row_title_institutes_detail = mysqli_fetch_array($query_title_institutes_detail);
+            echo '
+                  <title>MIREA / INSTITUTES / ', $row_title_institutes["institutes_name"], ' / ', $row_title_institutes_detail["institutes_detail_name"], '</title>
+            ';
+
+        } else {
+            header('location: 404.php');
+        }
+    } else {
+        header('location: 404.php');
+    }
+
+}
+?>
+
   </head>
   <body>
 

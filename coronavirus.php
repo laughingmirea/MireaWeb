@@ -44,7 +44,30 @@
 
 
 
-    <title>MIREA - Russian Technological University</title>
+    <?php
+ob_start();
+session_start();
+include_once './connect.php';
+if (isset($_GET["coronavirus_post_link"])) {
+    $coronavirus_post_link = $_GET["coronavirus_post_link"];
+
+    $sql_title_coronavirus = "SELECT * FROM coronavirus WHERE coronavirus_post_link='$coronavirus_post_link'";
+    $query_title_coronavirus = mysqli_query($connect, $sql_title_coronavirus);
+
+    if (mysqli_num_rows($query_title_coronavirus) > 0) {
+        $row_title_coronavirus = mysqli_fetch_array($query_title_coronavirus);
+
+        echo '
+                  <title>MIREA / CORONAVIRUS / ', $row_title_coronavirus["coronavirus_post_name"], '</title>
+            ';
+
+    } else {
+        header('location: 404.php');
+    }
+
+}
+?>
+
   </head>
   <body>
 

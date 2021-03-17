@@ -1,7 +1,7 @@
     <!-- HERO
     ================================================== -->
 <?php
-$sql_post_first = "SELECT * FROM post_news LIMIT 1";
+$sql_post_first = "SELECT * FROM post_news ORDER BY id DESC LIMIT 1";
 $query_post_first = mysqli_query($connect, $sql_post_first);
 
 if (mysqli_num_rows($query_post_first) > 0) {
@@ -68,7 +68,7 @@ if (mysqli_num_rows($query_post_first) > 0) {
         <div class="row align-items-stretch">
 
 <?php
-$sql_post_second = "SELECT * FROM post_news LIMIT 1,3";
+$sql_post_second = "SELECT * FROM post_news ORDER BY id DESC LIMIT 1,3";
 $query_post_second = mysqli_query($connect, $sql_post_second);
 
 if (mysqli_num_rows($query_post_second) > 0) {
@@ -121,7 +121,7 @@ if (mysqli_num_rows($query_post_second) > 0) {
       <div class="container section pb-0">
 
 <?php
-$sql_post_third = "SELECT * FROM post_news LIMIT 4,100";
+$sql_post_third = "SELECT * FROM post_news ORDER BY id DESC LIMIT 4,100";
 $query_post_third = mysqli_query($connect, $sql_post_third);
 
 if (mysqli_num_rows($query_post_third) > 0) {

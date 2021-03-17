@@ -128,7 +128,10 @@ if (isset($_SESSION["email"])) {
     <div style="margin: 70px;"></div>
 
 <?php
-}
+} else {
+            header('location: 404.php');
+
+        }
     }
 }
 ?>

@@ -43,11 +43,14 @@
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 
 
-    <title>MIREA - Russian Technological University</title>
+    <title>MIREA / CONTACT</title>
   </head>
   <body>
 
-  <?php
+<?php
+ob_start();
+session_start();
+
 include_once './layouts/header_all.php';
 ?>
 

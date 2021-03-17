@@ -34,7 +34,7 @@ if (isset($_SESSION["email"])) {
 
         $post_author = $_SESSION["email"];
 
-        $sql_post_third = "SELECT * FROM post_news WHERE post_author='$post_author'";
+        $sql_post_third = "SELECT * FROM post_news WHERE post_author='$post_author' ORDER BY id DESC";
         $query_post_third = mysqli_query($connect, $sql_post_third);
         if (mysqli_num_rows($query_post_third) > 0) {
             while ($row_post_third = mysqli_fetch_array($query_post_third)) {
@@ -77,10 +77,12 @@ if (isset($_SESSION["email"])) {
                 </div>
             ';
             }
+        } else {
+            echo '<div class="text-center"><p>Your post was not found. <br>Let\'s <a href="news_create_post.php"><strong>create</strong></a> your first post.</p></div>';
         }
     } else if ((Boolean) $_SESSION["isAdmin"]) {
 
-        $sql_post_third = "SELECT * FROM post_news";
+        $sql_post_third = "SELECT * FROM post_news ORDER BY id DESC";
         $query_post_third = mysqli_query($connect, $sql_post_third);
 
         if (mysqli_num_rows($query_post_third) > 0) {

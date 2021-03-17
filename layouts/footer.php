@@ -224,12 +224,17 @@ if (mysqli_num_rows($query_catalog_detail_footer_4) > 0) {
                 Contact
                 </a>
               </li>
+              <li class="">
+                <a href="news_all_posts.php" class="text-white">
+                  News
+                </a>
+              </li>
           </ul>
 
           </div>
 
         </div> <!-- / .row -->
         <hr class="solid">
-        <p class="copyright">© 2021 MIREA - Russian Technological University</p>
+        <p class="copyright">© 2021 MIREA - Russian Technological University | Create by <strong>VIETNAMESE STUDENTS</strong> - IKBO 07-19</p>
       </div> <!-- / .container -->
     </footer>

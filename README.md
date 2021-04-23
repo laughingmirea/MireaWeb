@@ -73,7 +73,7 @@
 Website is only optimized on desktop platforms. Please use the desktop when accessing the website.
 For the best experience, we recommend using the following chromium browsers:
 
-- Mircosoft Edge
+- Microsoft Edge
 - Chrome
 
 ## Usage

@@ -10,7 +10,7 @@
   <p align="center">
     MIREA - RUSSIAN TECHNOLOGICAL UNIVERSITY
     <br />
-    <a href="http://mireaweb.dinhcuong.me/"><strong>View our website »</strong></a>
+    <a href=""><strong>View our website »</strong></a>
     <br />
     <br />
   </p>
